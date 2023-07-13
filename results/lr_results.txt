@@ -1,0 +1,393 @@
+*********** pi = 0.1 ***********
+
+----------------
+LR Type : linear
+----------------
+Raw data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.471311
+lambda: 1e-06 | 0.471311
+lambda: 0.0001 | 0.471311
+lambda: 0.01 | 0.471311
+lambda: 1 | 0.478506
+lambda: 100 | 0.592444
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.472275
+lambda: 1e-06 | 0.472275
+lambda: 0.0001 | 0.472275
+lambda: 0.01 | 0.472971
+lambda: 1 | 0.481373
+lambda: 100 | 0.554959
+----------------
+Gaussianized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.520501
+lambda: 1e-06 | 0.520501
+lambda: 0.0001 | 0.520501
+lambda: 0.01 | 0.530035
+lambda: 1 | 0.604493
+lambda: 100 | 0.606832
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.502480
+lambda: 1e-06 | 0.502480
+lambda: 0.0001 | 0.502480
+lambda: 0.01 | 0.509283
+lambda: 1 | 0.574119
+lambda: 100 | 0.630102
+----------------
+Standardized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.471311
+lambda: 1e-06 | 0.471311
+lambda: 0.0001 | 0.471311
+lambda: 0.01 | 0.478506
+lambda: 1 | 0.552787
+lambda: 100 | 0.573200
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.472275
+lambda: 1e-06 | 0.472275
+lambda: 0.0001 | 0.473525
+lambda: 0.01 | 0.477971
+lambda: 1 | 0.533443
+lambda: 100 | 0.572664
+----------------
+
+----------------
+LR type : quadratic
+----------------
+Raw data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.326257
+lambda: 1e-06 | 0.333451
+lambda: 0.0001 | 0.319063
+lambda: 0.01 | 0.319063
+lambda: 1 | 0.308359
+lambda: 100 | 0.337136
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.292684
+lambda: 1e-06 | 0.301434
+lambda: 0.0001 | 0.305676
+lambda: 0.01 | 0.293586
+lambda: 1 | 0.306988
+lambda: 100 | 0.344406
+----------------
+Gaussianized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.347840
+lambda: 1e-06 | 0.347840
+lambda: 0.0001 | 0.340645
+lambda: 0.01 | 0.320232
+lambda: 1 | 0.341815
+lambda: 100 | 0.361058
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.312889
+lambda: 1e-06 | 0.312889
+lambda: 0.0001 | 0.310594
+lambda: 0.01 | 0.285594
+lambda: 1 | 0.324631
+lambda: 100 | 0.387336
+----------------
+Standardized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.333451
+lambda: 1e-06 | 0.333451
+lambda: 0.0001 | 0.326257
+lambda: 0.01 | 0.319063
+lambda: 1 | 0.320232
+lambda: 100 | 0.370592
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.303381
+lambda: 1e-06 | 0.303381
+lambda: 0.0001 | 0.296496
+lambda: 0.01 | 0.281988
+lambda: 1 | 0.318730
+lambda: 100 | 0.373934
+----------------
+
+
+*********** pi = 0.5 ***********
+
+----------------
+LR Type : linear
+----------------
+Raw data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.204065
+lambda: 1e-06 | 0.204065
+lambda: 0.0001 | 0.204065
+lambda: 0.01 | 0.204065
+lambda: 1 | 0.205014
+lambda: 100 | 0.227546
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.175922
+lambda: 1e-06 | 0.175922
+lambda: 0.0001 | 0.175922
+lambda: 0.01 | 0.175266
+lambda: 1 | 0.183791
+lambda: 100 | 0.194549
+----------------
+Gaussianized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.214327
+lambda: 1e-06 | 0.214327
+lambda: 0.0001 | 0.215386
+lambda: 0.01 | 0.218453
+lambda: 1 | 0.222360
+lambda: 100 | 0.215165
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.180881
+lambda: 1e-06 | 0.180881
+lambda: 0.0001 | 0.180820
+lambda: 0.01 | 0.182725
+lambda: 1 | 0.199283
+lambda: 100 | 0.217439
+----------------
+Standardized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.204065
+lambda: 1e-06 | 0.204065
+lambda: 0.0001 | 0.204065
+lambda: 0.01 | 0.194863
+lambda: 1 | 0.210200
+lambda: 100 | 0.213047
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.175922
+lambda: 1e-06 | 0.175922
+lambda: 0.0001 | 0.175922
+lambda: 0.01 | 0.176516
+lambda: 1 | 0.190984
+lambda: 100 | 0.206844
+----------------
+
+----------------
+LR type : quadratic
+----------------
+Raw data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.075738
+lambda: 1e-06 | 0.072671
+lambda: 0.0001 | 0.075738
+lambda: 0.01 | 0.069603
+lambda: 1 | 0.087059
+lambda: 100 | 0.094253
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.095143
+lambda: 1e-06 | 0.097643
+lambda: 0.0001 | 0.097643
+lambda: 0.01 | 0.093053
+lambda: 1 | 0.098463
+lambda: 100 | 0.095738
+----------------
+Gaussianized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.084941
+lambda: 1e-06 | 0.084941
+lambda: 0.0001 | 0.084941
+lambda: 0.01 | 0.070552
+lambda: 1 | 0.104515
+lambda: 100 | 0.134241
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.102008
+lambda: 1e-06 | 0.102008
+lambda: 0.0001 | 0.101947
+lambda: 0.01 | 0.092746
+lambda: 1 | 0.119078
+lambda: 100 | 0.165615
+----------------
+Standardized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.088008
+lambda: 1e-06 | 0.088008
+lambda: 0.0001 | 0.084941
+lambda: 0.01 | 0.069603
+lambda: 1 | 0.091186
+lambda: 100 | 0.121971
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.100266
+lambda: 1e-06 | 0.100266
+lambda: 0.0001 | 0.099672
+lambda: 0.01 | 0.087213
+lambda: 1 | 0.114303
+lambda: 100 | 0.157439
+----------------
+
+
+*********** pi = 0.9 ***********
+
+----------------
+LR Type : linear
+----------------
+Raw data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.429448
+lambda: 1e-06 | 0.429448
+lambda: 0.0001 | 0.429448
+lambda: 0.01 | 0.429448
+lambda: 1 | 0.423313
+lambda: 100 | 0.447853
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.393299
+lambda: 1e-06 | 0.393299
+lambda: 0.0001 | 0.393299
+lambda: 0.01 | 0.393299
+lambda: 1 | 0.375143
+lambda: 100 | 0.356025
+----------------
+Gaussianized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.433177
+lambda: 1e-06 | 0.433177
+lambda: 0.0001 | 0.433177
+lambda: 0.01 | 0.436245
+lambda: 1 | 0.448515
+lambda: 100 | 0.451582
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.399201
+lambda: 1e-06 | 0.399201
+lambda: 0.0001 | 0.399201
+lambda: 0.01 | 0.394611
+lambda: 1 | 0.375594
+lambda: 100 | 0.408176
+----------------
+Standardized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.429448
+lambda: 1e-06 | 0.429448
+lambda: 0.0001 | 0.429448
+lambda: 0.01 | 0.426380
+lambda: 1 | 0.438650
+lambda: 100 | 0.438650
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.393299
+lambda: 1e-06 | 0.393299
+lambda: 0.0001 | 0.393299
+lambda: 0.01 | 0.381598
+lambda: 1 | 0.363033
+lambda: 100 | 0.367418
+----------------
+
+----------------
+LR type : quadratic
+----------------
+Raw data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.107362
+lambda: 1e-06 | 0.101227
+lambda: 0.0001 | 0.113497
+lambda: 0.01 | 0.119632
+lambda: 1 | 0.144172
+lambda: 100 | 0.162577
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.267602
+lambda: 1e-06 | 0.266947
+lambda: 0.0001 | 0.264775
+lambda: 0.01 | 0.265840
+lambda: 1 | 0.255594
+lambda: 100 | 0.244857
+----------------
+Gaussianized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.180982
+lambda: 1e-06 | 0.180982
+lambda: 0.0001 | 0.180982
+lambda: 0.01 | 0.070552
+lambda: 1 | 0.187448
+lambda: 100 | 0.328552
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.213730
+lambda: 1e-06 | 0.213730
+lambda: 0.0001 | 0.210451
+lambda: 0.01 | 0.179078
+lambda: 1 | 0.299037
+lambda: 100 | 0.411168
+----------------
+Standardized data
+----------------
+ Single split 
+----------------
+lambda: 0 | 0.184049
+lambda: 1e-06 | 0.184049
+lambda: 0.0001 | 0.184049
+lambda: 0.01 | 0.082822
+lambda: 1 | 0.159840
+lambda: 100 | 0.325484
+----------------
+5 fold cross validation
+----------------
+lambda: 0 | 0.217664
+lambda: 1e-06 | 0.217664
+lambda: 0.0001 | 0.213730
+lambda: 0.01 | 0.180389
+lambda: 1 | 0.300000
+lambda: 100 | 0.393463
+----------------
+
+

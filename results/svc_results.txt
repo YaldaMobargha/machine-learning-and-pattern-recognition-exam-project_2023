@@ -1,0 +1,122 @@
+kernel: linear
+----------------
+Raw data
+Single Split
+----------------
+C: 0.1 | 0.199718 | balance False | pi 0.5
+C: 0.1 | 0.200777 | balance True | pi 0.5
+C: 1.0 | 0.216445 | balance False | pi 0.5
+C: 1.0 | 0.185439 | balance True | pi 0.5
+C: 10.0 | 0.239374 | balance False | pi 0.5
+C: 10.0 | 0.357439 | balance True | pi 0.5
+5-fold cross validation
+----------------
+C: 0.1 | 0.178012 | balance False
+C: 0.1 | 0.174201 | balance True
+C: 1.0 | 0.184324 | balance False
+C: 1.0 | 0.186352 | balance True
+C: 10.0 | 0.268873 | balance False
+C: 10.0 | 0.351906 | balance True
+
+Gaussianized data
+Single Split
+----------------
+C: 0.1 | 0.227325 | balance False | pi 0.5
+C: 0.1 | 0.221080 | balance True | pi 0.5
+C: 1.0 | 0.226597 | balance False | pi 0.5
+C: 1.0 | 0.222470 | balance True | pi 0.5
+C: 10.0 | 0.225648 | balance False | pi 0.5
+C: 10.0 | 0.217394 | balance True | pi 0.5
+5-fold cross validation
+----------------
+C: 0.1 | 0.183566 | balance False
+C: 0.1 | 0.183094 | balance True
+C: 1.0 | 0.185594 | balance False
+C: 1.0 | 0.183689 | balance True
+C: 10.0 | 0.183504 | balance False
+C: 10.0 | 0.192910 | balance True
+
+Standardized data
+Single Split
+----------------
+C: 0.1 | 0.207132 | balance False | pi 0.5
+C: 0.1 | 0.197930 | balance True | pi 0.5
+C: 1.0 | 0.207132 | balance False | pi 0.5
+C: 1.0 | 0.204065 | balance True | pi 0.5
+C: 10.0 | 0.211987 | balance False | pi 0.5
+C: 10.0 | 0.211877 | balance True | pi 0.5
+5-fold cross validation
+----------------
+C: 0.1 | 0.173832 | balance False
+C: 0.1 | 0.176045 | balance True
+C: 1.0 | 0.175861 | balance False
+C: 1.0 | 0.172951 | balance True
+C: 10.0 | 0.174365 | balance False
+C: 10.0 | 0.176455 | balance True
+
+
+----------------
+kernel : poly (degree=2)
+----------------
+Standardized data
+Single Split
+----------------
+C: 0.1 | 0.089067 | balance False | pi 0.5
+C: 0.1 | 0.081873 | balance True | pi 0.5
+C: 1.0 | 0.091076 | balance False | pi 0.5
+C: 1.0 | 0.091076 | balance True | pi 0.5
+C: 10.0 | 0.096262 | balance False | pi 0.5
+C: 10.0 | 0.091186 | balance True | pi 0.5
+5-fold cross validation
+----------------
+C: 0.1 | 0.092664 | balance False
+C: 0.1 | 0.090266 | balance True
+C: 1.0 | 0.105676 | balance False
+C: 1.0 | 0.100553 | balance True
+C: 10.0 | 0.110266 | balance False
+C: 10.0 | 0.098586 | balance True
+
+
+----------------
+kernel : RBF (log gamma = -1)
+----------------
+Standardized data
+Single Split
+----------------
+C: 0.1 | 0.081983 | balance False | pi 0.5
+C: 0.1 | 0.082932 | balance True | pi 0.5
+C: 1.0 | 0.072671 | balance False | pi 0.5
+C: 1.0 | 0.070552 | balance True | pi 0.5
+C: 10.0 | 0.102286 | balance False | pi 0.5
+C: 10.0 | 0.091076 | balance True | pi 0.5
+5-fold cross validation
+----------------
+C: 0.1 | 0.088852 | balance False
+C: 0.1 | 0.093320 | balance True
+C: 1.0 | 0.085799 | balance False
+C: 1.0 | 0.084549 | balance True
+C: 10.0 | 0.117418 | balance False
+C: 10.0 | 0.114918 | balance True
+
+
+----------------
+kernel : RBF (log gamma = -2)
+----------------
+
+Standardized data
+Single Split
+----------------
+C: 0.1 | 0.080924 | balance False | pi 0.5
+C: 0.1 | 0.081983 | balance True | pi 0.5
+C: 1.0 | 0.079865 | balance False | pi 0.5
+C: 1.0 | 0.069603 | balance True | pi 0.5
+C: 10.0 | 0.093194 | balance False | pi 0.5
+C: 10.0 | 0.090127 | balance True | pi 0.5
+5-fold cross validation
+----------------
+C: 0.1 | 0.089078 | balance False
+C: 0.1 | 0.092889 | balance True
+C: 1.0 | 0.083832 | balance False
+C: 1.0 | 0.081680 | balance True
+C: 10.0 | 0.104078 | balance False
+C: 10.0 | 0.100430 | balance True
