@@ -27,14 +27,22 @@ lambda: 0.0001 | 0.440034
 lambda: 0.01 | 0.438880
 lambda: 1 | 0.473222
 lambda: 100 | 0.481706
-Standardized data, PCA(n_components=10)
+Standardized data, PCA(n_components=9)
 ----------------
-lambda: 0 | 0.440034
-lambda: 1e-06 | 0.440034
-lambda: 0.0001 | 0.440034
-lambda: 0.01 | 0.438880
-lambda: 1 | 0.473222
-lambda: 100 | 0.481706
+lambda: 0 | 0.448543
+lambda: 1e-06 | 0.448543
+lambda: 0.0001 | 0.448573
+lambda: 0.01 | 0.451876
+lambda: 1 | 0.476978
+lambda: 100 | 0.485040
+Standardized data, PCA(n_components=7)
+----------------
+lambda: 0 | 0.450517
+lambda: 1e-06 | 0.450517
+lambda: 0.0001 | 0.450933
+lambda: 0.01 | 0.449563
+lambda: 1 | 0.478590
+lambda: 100 | 0.485728
 
 
 
@@ -65,14 +73,22 @@ lambda: 0.0001 | 0.253501
 lambda: 0.01 | 0.234455
 lambda: 1 | 0.274943
 lambda: 100 | 0.325500
-Standardized data, PCA(n_components=10)
+Standardized data, PCA(n_components=9)
 ----------------
-lambda: 0 | 0.255554
-lambda: 1e-06 | 0.255554
-lambda: 0.0001 | 0.253918
-lambda: 0.01 | 0.234455
-lambda: 1 | 0.274943
-lambda: 100 | 0.325500
+lambda: 0 | 0.236514
+lambda: 1e-06 | 0.236514
+lambda: 0.0001 | 0.237734
+lambda: 0.01 | 0.237311
+lambda: 1 | 0.284727
+lambda: 100 | 0.329184
+Standardized data, PCA(n_components=7)
+----------------
+lambda: 0 | 0.253984
+lambda: 1e-06 | 0.253984
+lambda: 0.0001 | 0.254014
+lambda: 0.01 | 0.254485
+lambda: 1 | 0.290777
+lambda: 100 | 0.342819
 
 
 
@@ -105,14 +121,22 @@ lambda: 0.0001 | 0.164893
 lambda: 0.01 | 0.164308
 lambda: 1 | 0.176586
 lambda: 100 | 0.180206
-Standardized data, PCA(n_components=10)
+Standardized data, PCA(n_components=9)
 ----------------
-lambda: 0 | 0.164753
-lambda: 1e-06 | 0.164753
-lambda: 0.0001 | 0.164893
-lambda: 0.01 | 0.164308
-lambda: 1 | 0.176586
-lambda: 100 | 0.180206
+lambda: 0 | 0.165579
+lambda: 1e-06 | 0.165579
+lambda: 0.0001 | 0.165579
+lambda: 0.01 | 0.166252
+lambda: 1 | 0.177428
+lambda: 100 | 0.180730
+Standardized data, PCA(n_components=7)
+----------------
+lambda: 0 | 0.168218
+lambda: 1e-06 | 0.168218
+lambda: 0.0001 | 0.168328
+lambda: 0.01 | 0.166997
+lambda: 1 | 0.177200
+lambda: 100 | 0.180424
 
 
 
@@ -143,14 +167,22 @@ lambda: 0.0001 | 0.083345
 lambda: 0.01 | 0.075824
 lambda: 1 | 0.096382
 lambda: 100 | 0.141833
-Standardized data, PCA(n_components=10)
+Standardized data, PCA(n_components=9)
 ----------------
-lambda: 0 | 0.083573
-lambda: 1e-06 | 0.083573
-lambda: 0.0001 | 0.083345
-lambda: 0.01 | 0.075824
-lambda: 1 | 0.096382
-lambda: 100 | 0.141833
+lambda: 0 | 0.083663
+lambda: 1e-06 | 0.083663
+lambda: 0.0001 | 0.083663
+lambda: 0.01 | 0.079050
+lambda: 1 | 0.097939
+lambda: 100 | 0.143271
+Standardized data, PCA(n_components=7)
+----------------
+lambda: 0 | 0.085615
+lambda: 1e-06 | 0.085615
+lambda: 0.0001 | 0.085238
+lambda: 0.01 | 0.081965
+lambda: 1 | 0.106917
+lambda: 100 | 0.150117
 
 
 
@@ -183,14 +215,22 @@ lambda: 0.0001 | 0.378337
 lambda: 0.01 | 0.372200
 lambda: 1 | 0.368972
 lambda: 100 | 0.369497
-Standardized data, PCA(n_components=10)
+Standardized data, PCA(n_components=9)
 ----------------
-lambda: 0 | 0.377771
-lambda: 1e-06 | 0.377771
-lambda: 0.0001 | 0.378337
-lambda: 0.01 | 0.372200
-lambda: 1 | 0.368972
-lambda: 100 | 0.369497
+lambda: 0 | 0.382213
+lambda: 1e-06 | 0.382213
+lambda: 0.0001 | 0.382213
+lambda: 0.01 | 0.375238
+lambda: 1 | 0.368135
+lambda: 100 | 0.371927
+Standardized data, PCA(n_components=7)
+----------------
+lambda: 0 | 0.390782
+lambda: 1e-06 | 0.390782
+lambda: 0.0001 | 0.390782
+lambda: 0.01 | 0.380831
+lambda: 1 | 0.368115
+lambda: 100 | 0.370041
 
 
 
@@ -221,14 +261,22 @@ lambda: 0.0001 | 0.211670
 lambda: 0.01 | 0.182760
 lambda: 1 | 0.251452
 lambda: 100 | 0.359461
-Standardized data, PCA(n_components=10)
+Standardized data, PCA(n_components=9)
 ----------------
-lambda: 0 | 0.211293
-lambda: 1e-06 | 0.211293
-lambda: 0.0001 | 0.211670
-lambda: 0.01 | 0.182760
-lambda: 1 | 0.251452
-lambda: 100 | 0.359461
+lambda: 0 | 0.220760
+lambda: 1e-06 | 0.220760
+lambda: 0.0001 | 0.219629
+lambda: 0.01 | 0.206452
+lambda: 1 | 0.263058
+lambda: 100 | 0.363588
+Standardized data, PCA(n_components=7)
+----------------
+lambda: 0 | 0.219272
+lambda: 1e-06 | 0.219272
+lambda: 0.0001 | 0.220403
+lambda: 0.01 | 0.225222
+lambda: 1 | 0.272485
+lambda: 100 | 0.384515
 
 
 

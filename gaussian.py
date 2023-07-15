@@ -165,16 +165,16 @@ if __name__ == '__main__':
         k_fold_gauss(writer, models, X, y, n_folds, pi, gauss=True)
 
         writer("\n----------------")
-        writer("Gaussian data, PCA(n_components=10)")
-        writer("----------------")
-        single_split_gauss(writer, models, X_gauss, y, pi, use_pca=True, n_components=10)
-        k_fold_gauss(writer, models, X, y, n_folds, pi, gauss=True, use_pca=True, n_components=10)
-
-        writer("\n----------------")
         writer("Gaussian data, PCA(n_components=9)")
         writer("----------------")
         single_split_gauss(writer, models, X_gauss, y, pi, use_pca=True, n_components=9)
         k_fold_gauss(writer, models, X, y, n_folds, pi, gauss=True, use_pca=True, n_components=9)
+
+        writer("\n----------------")
+        writer("Gaussian data, PCA(n_components=7)")
+        writer("----------------")
+        single_split_gauss(writer, models, X_gauss, y, pi, use_pca=True, n_components=7)
+        k_fold_gauss(writer, models, X, y, n_folds, pi, gauss=True, use_pca=True, n_components=7)
 
     writer.destroy()
 
@@ -203,16 +203,16 @@ if __name__ == '__main__':
         gaussian_classifiers_eval(writer, models, X_gauss, y, X_test_gauss, y_test, pi)
 
         writer("\n----------------")
-        writer("Gaussian data, PCA(n_components=10)")
-        writer("----------------")
-        gaussian_classifiers_eval(writer, models, X_gauss, y, X_test_gauss, y_test, pi,
-                                  use_pca=True, n_components=10)
-
-        writer("\n----------------")
         writer("Gaussian data, PCA(n_components=9)")
         writer("----------------")
         gaussian_classifiers_eval(writer, models, X_gauss, y, X_test_gauss, y_test, pi,
                                   use_pca=True, n_components=9)
+
+        writer("\n----------------")
+        writer("Gaussian data, PCA(n_components=7)")
+        writer("----------------")
+        gaussian_classifiers_eval(writer, models, X_gauss, y, X_test_gauss, y_test, pi,
+                                  use_pca=True, n_components=7)
 
     writer.destroy()
 

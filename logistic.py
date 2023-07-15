@@ -209,10 +209,14 @@ if __name__ == '__main__':
     # i.e. the scaler is already fitted here!
     X_test_gauss = gs.transform(X_test)
 
-    # standardized data with 10 components PCA
-    pca = PCA(n_components=10).fit(X_std)
-    X_pca = pca.transform(X_std)
-    X_test_pca = pca.transform(X_test_std)
+    # standardized data with 7 and 9 components PCA
+    pca7 = PCA(n_components=7).fit(X_std)
+    X_pca7 = pca7.transform(X_std)
+    X_test_pca7 = pca7.transform(X_test_std)
+
+    pca9 = PCA(n_components=9).fit(X_std)
+    X_pca9 = pca9.transform(X_std)
+    X_test_pca9 = pca9.transform(X_test_std)
 
     writer = Writer("results/lr_results_eval.txt")
     for pi in [.1, .5, .9]:
@@ -234,8 +238,12 @@ if __name__ == '__main__':
             writer("----------------")
             lr_lambda_search(writer, lr_t, 'std', X_std, y, X_test_std, y_test, pi)
 
-            writer("Standardized data, PCA(n_components=10)")
+            writer("Standardized data, PCA(n_components=9)")
             writer("----------------")
-            lr_lambda_search(writer, lr_t, 'std', X_pca, y, X_test_pca, y_test, pi)
+            lr_lambda_search(writer, lr_t, 'std', X_pca9, y, X_test_pca9, y_test, pi)
+
+            writer("Standardized data, PCA(n_components=7)")
+            writer("----------------")
+            lr_lambda_search(writer, lr_t, 'std', X_pca7, y, X_test_pca7, y_test, pi)
             writer("\n\n")
     writer.destroy()
