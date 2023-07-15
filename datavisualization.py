@@ -29,6 +29,23 @@ def feat_heatmap(X, label: str = ""):
     plt.savefig(f'report/images/{label}.png')
 
 
+def scatter_plots(X, y, label: str = ''):
+    n_features = X.shape[0]
+    for i in range(n_features):
+        for j in range(i+1, n_features):
+            plt.figure()
+            indices_class0 = np.where(y == 0)[0]
+            indices_class1 = np.where(y == 1)[0]
+            plt.scatter(X[i, indices_class0], X[j, indices_class0], color='yellow', label=classes[0])
+            plt.scatter(X[i, indices_class1], X[j, indices_class1], color='blue', label=classes[1])
+            plt.xlabel(features[i])
+            plt.ylabel(features[j])
+            plt.legend()
+            plt.title(f"{features[i]} vs {features[j]} Scatter Plot")
+            plt.savefig(f"report/images/{label}_{features[i]}_{features[j]}.png")
+            plt.close()
+
+
 if __name__ == "__main__":
     X_train, y_train = load_fingerprint_train()
 
@@ -56,3 +73,7 @@ if __name__ == "__main__":
     X_test, _ = load_fingerprint_test()
     X_test_gauss = cumulative_feature_rank(X_test, X_train)
     np.save("results/gaussian_feats_test.npy", X_test_gauss)
+
+
+    scatter_plots(X_train, y_train, "scatter_plot")
+
