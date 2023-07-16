@@ -1,14 +1,14 @@
 import numpy as np
-from mlprlib.logistic import LogisticRegression
+from libraries.logistic import LogisticRegression
 
-from mlprlib.metrics import (
+from libraries.metrics import (
     min_detection_cost_fun,
     normalized_bayes_risk,
     detection_cost_fun,
     confusion_matrix
 )
 
-from mlprlib.model_selection import KFold
+from libraries.model_selection import KFold
 
 
 def calibrate(scores_train,
@@ -21,47 +21,6 @@ def calibrate(scores_train,
               cfn: float = 1.,
               cfp: float = 1.
               ):
-    """
-    Calibrates scores using a Linear Logistic
-    Regression Model
-
-    Parameters
-    ----------
-    scores_train:
-        ndarray, loglikelihood ratios
-        outputted by the model on training set
-
-    scores_test:
-        ndarray, loglikelihood ratios
-        outputted by the model on test set
-
-    y_train:
-        ndarray, training target values
-
-    y_test:
-        ndarray, testing target values
-
-    l:
-        float, the lambda parameter of the linear
-        logistic regression. It's the norm multiplier.
-        Default 0.1
-
-    pi:
-        float, class prior probability for the True case.
-        Default 0.5
-
-    cfn:
-        float, cost of the false negative error.
-        Default 1.
-
-    cfp:
-        float, cost of the false positive error.
-        Default 1.
-
-    Returns
-    -------
-        estimated and calibration dcf 
-    """
     llr_train = scores_train.reshape([scores_train.shape[0], 1])
     llr_test = scores_test.reshape([scores_test.shape[0], 1])
 
@@ -69,20 +28,13 @@ def calibrate(scores_train,
     lr.fit(llr_train, y_train)
 
     _, score = lr.predict(llr_test, return_proba=True)
-    # the calibration score is obtained from
-    # the score of the LR subtracted by the theoretical
-    # threshold
     calib_score = score - np.log(pi / (1 - pi))
-    # dfc of calibration, i.e. the dfc computed with
-    # the calibration score
     dcf_cal = detection_cost_fun(calib_score, y_test, pi, cfn, cfp)
 
-    # optimal threshold
     _, opt_threshold = min_detection_cost_fun(scores_train, y_train, pi, cfn, cfp)
     y_pred = (scores_test > opt_threshold).astype(np.int32)
     cm = confusion_matrix(y_test, y_pred)
 
-    # estimate actual dcf using the optimal threshold
     dcf_est = normalized_bayes_risk(cm, pi, cfn, cfp)
 
     return dcf_cal, dcf_est
@@ -96,47 +48,6 @@ def kfold_calibrate(llr,
                     *,
                     seed=0,
                     compute_threshold: bool = False):
-    """
-    Calibrates scores using a Linear Logistic Regression in a
-     K-fold cross validation
-
-    Parameters
-    ----------
-    llr:
-        ndarray, scores to calibrate
-    y:
-        ndarray, true labels
-    l:
-        float, lambda scaler of the Linear Logistic Regression.
-
-    n_folds:
-        int, number of folds for the CV.
-        Default 5.
-
-    pi:
-        float, class prior probability for the True case.
-        Default 0.5
-
-    cfn:
-        float, cost of the false negative error.
-        Default 1
-
-    cfp:
-        float, cost of the false negative error.
-        Default 1
-
-    seed:
-        int, random seed for numpy.
-        Default 0
-
-    compute_threshold:
-        whether to compute the threshold during calibration.
-        Default False
-
-    Returns
-    -------
-        estimated and calibrated dcf
-    """
     n_samples = len(llr)
     lr = LogisticRegression(l_scaler=l)
 
@@ -160,9 +71,7 @@ def kfold_calibrate(llr,
                                               y_train, pi, cfn, cfp)
             opt_th_decisions[idx_test] = 1. * (X_test.reshape([X_test.shape[0], ]) > opt_t)
 
-    # subtract the theoretical threshold
     scores_cal -= np.log(pi / (1 - pi))
-    # compute actual dcf for calibrated score
     act_dcf_cal = detection_cost_fun(scores_cal, y, pi, cfn, cfp)
 
     if not compute_threshold:
@@ -181,49 +90,6 @@ def joint_eval(*scores,
                cfn: float = 1,
                cfp: float = 1,
                ):
-    """
-    Evaluate the fusion of `n_models` models using a Linear Logistic
-    Regression
-
-    Parameters
-    ----------
-    scores:
-        variadic containing train and test samples for each model.
-        Must be of size (2 * n_models, n_samples)
-
-    y_train:
-        ndarray, the training labels
-
-    y_test:
-        ndarray, the test labels
-
-    l:
-        float, the lambda parameter of the logistic regression.
-        It's the norm multiplier.
-
-    pi:
-        float, class prior probability for the True case.
-        Default 0.5
-
-    cfn:
-        float, cost of the false negative error.
-        Default 1
-
-    cfp:
-        float, cost of the false negative error.
-        Default 1
-
-    Returns
-    -------
-        score:
-            the score retrieved by the logistic regression
-
-        act_dcf:
-            the actual normalized bayes risk
-
-        min_dcf:
-            the minimum detection cost (min bayes risk)
-    """
     n_scores = len(scores)
     n_models = len(scores) // 2
 
@@ -232,7 +98,6 @@ def joint_eval(*scores,
             "joint evaluation requires train and test scores"
             " for each  models. Got %s scores." % n_scores
         )
-    # iterate over training and testing scores
     X_train = np.zeros([scores[0].shape[0], n_scores])
     X_test = np.zeros([scores[1].shape[0], n_scores])
     for s in range(0, n_scores, 2):
@@ -263,54 +128,6 @@ def k_fold_joint_eval(*scores,
                       cfp: float = 1,
                       seed: int = 0
                       ):
-    """
-    Evaluates the fusion of N models
-    given their scores, using a linear logistic
-    regression and a k-fold cross validation
-
-    Parameters
-    ----------
-    scores:
-        variadic, an array-like of an array-like
-        of scores. Must be of shape
-            (n_models, n_samples)
-
-    y:
-        ndarray, the true labels
-
-    l:
-        float, the lambda scaler of the linear logistic
-        regression.
-        Default 0
-
-    n_folds:
-        int, the number of folds for cross validation.
-        Default 5.
-
-    pi:
-        float, class prior probability for the True case.
-        Default 0.5
-
-    cfn:
-        float, cost of the false negative error.
-        Default 1
-
-    cfp:
-        float, cost of the false negative error.
-        Default 1
-
-    seed:
-        int, random seed for numpy.
-        Default 0.
-
-    Returns
-    -------
-        min_dcf:
-            the minimum detection cost (min bayes risk)
-
-        act_dcf:
-            the actual normalized bayes risk
-    """
     n_scores = len(scores)
     if n_scores <= 1:
         raise ValueError(
@@ -318,11 +135,8 @@ def k_fold_joint_eval(*scores,
             " two models. Got scores for %s models." % n_scores
         )
 
-    # define the Linear Logistic Regression
-    # for calibrating the scores
     lr = LogisticRegression(l_scaler=l)
 
-    # define log likelihood ratios
     n_samples = len(scores[0])
     llr = np.zeros([n_samples, ])
 

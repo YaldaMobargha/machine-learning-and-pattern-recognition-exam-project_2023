@@ -1,29 +1,29 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from mlprlib.dataset import (
+from libraries.dataset import (
     load_fingerprint_train,
     load_fingerprint_test
 )
-from mlprlib.preprocessing import StandardScaler
+from libraries.preprocessing import StandardScaler
 
 # most performing models
-from mlprlib.svm import SVClassifier
-from mlprlib.gaussian import GaussianMixture
-from mlprlib.logistic import QuadLogisticRegression
+from libraries.svm import SVClassifier
+from libraries.gaussian import GaussianMixture
+from libraries.logistic import QuadLogisticRegression
 
-from mlprlib.model_selection import (
+from libraries.model_selection import (
     calibrate,
     joint_eval
 )
 
-from mlprlib.metrics import (
+from libraries.metrics import (
     min_detection_cost_fun,
     detection_cost_fun,
     roc_curve
 )
 
-from mlprlib.utils import Writer
+from libraries.utils import Writer
 
 
 def save_roc_plot(scores, y, fig_name: str, labels: list):

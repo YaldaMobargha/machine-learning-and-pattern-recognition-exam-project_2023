@@ -1,28 +1,23 @@
-"""
-Using the Gaussian Mixture Model with different number of
-components with a 5-fold cross validation approach to
-classify wines and analyze the performances these methods yield.
-"""
 import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-from mlprlib.dataset import (
+from libraries.dataset import (
     load_fingerprint_train,
     load_fingerprint_test
 )
 
-from mlprlib.model_selection import CrossValidator
+from libraries.model_selection import CrossValidator
 
-from mlprlib.preprocessing import (
+from libraries.preprocessing import (
     StandardScaler,
     GaussianScaler
 )
 
-from mlprlib.metrics import min_detection_cost_fun
+from libraries.metrics import min_detection_cost_fun
 
-from mlprlib.utils import Writer
-from mlprlib.gaussian import GaussianMixture
+from libraries.utils import Writer
+from libraries.gaussian import GaussianMixture
 
 n_components_list = [2, 4, 8, 16]
 
@@ -46,7 +41,6 @@ def k_fold_gmm(writer, cov_t: str, data_t: str, X, y, pi=.5):
         cv.fit(X, y, gmm, transformers)
 
         scores = cv.scores
-        # evaluate minDCF
         min_dcf, _ = min_detection_cost_fun(scores, y, pi=pi)
 
         writer("n_components: %s | %f" % (n_comp, min_dcf))
@@ -85,10 +79,7 @@ def save_plots(scores_gauss, scores_std, fig_name):
 
 
 def save_barplots(scores_pi, fig_name):
-    """
-    scores_pi is a dictionary containing the scores for the
-    3 values of pi tested, i.e. [.1, .5, .9]
-    """
+    
     width = .25
     fig, ax = plt.subplots()
 
@@ -106,20 +97,15 @@ def save_barplots(scores_pi, fig_name):
 
 
 if __name__ == '__main__':
-    # number of folds for cross validation
+    #folds for cross-validation
     n_folds = 5
 
-    # load the dataset in the shape (n_samples, n_feats)
     X, y = load_fingerprint_train(feats_first=False)
 
-    # writing GMM results
     writer = Writer("results/gmm_results.txt")
 
-    # data structures to plot bar plots
-    # for the different priors
-    # (for full GMM only)
     dcf_gauss_pi, dcf_std_pi = {}, {}
-    # loop over priors
+    
     for pi in [.1, .5, .9]:
         writer("************* pi = %s *************\n" % pi)
         writer("----------------")
@@ -130,11 +116,10 @@ if __name__ == '__main__':
         writer("Standardized data")
         dcf_std = k_fold_gmm(writer, 'full', 'std', X, y, pi)
 
-        # save the results
+        # saving results
         dcf_gauss_pi[pi] = dcf_gauss
         dcf_std_pi[pi] = dcf_std
 
-        # save plots for full-cov gmm
         save_plots(dcf_gauss, dcf_std, "gmm_full_%s" % pi)
 
         writer("\n----------------")
@@ -145,7 +130,6 @@ if __name__ == '__main__':
         writer("Standardized data")
         dcf_std = k_fold_gmm(writer, 'diag', 'std', X, y, pi)
 
-        # save plots for diag-cov gmm
         save_plots(dcf_gauss, dcf_std, "gmm_diag_%s" % pi)
 
         writer("\n----------------")
@@ -156,7 +140,6 @@ if __name__ == '__main__':
         writer("Standardized data")
         dcf_std = k_fold_gmm(writer, 'full-tied', 'std', X, y, pi)
 
-        # save plots for tied full-cov gmm
         save_plots(dcf_gauss, dcf_std, "gmm_full_tied_%s" % pi)
 
         writer("\n----------------")
@@ -167,31 +150,24 @@ if __name__ == '__main__':
         writer("Standardized data")
         dcf_std = k_fold_gmm(writer, 'diag-tied', 'std', X, y, pi)
 
-        # save plots for the tied diag-cov gmm
         save_plots(dcf_gauss, dcf_std, "gmm_diag_tied_%s" % pi)
         writer('\n')
     writer.destroy()
 
-    # save bar plots
     save_barplots(dcf_gauss_pi, "gmm_gauss_pi")
     save_barplots(dcf_std_pi, "gmm_std_pi")
 
-    ##########################
-    # evaluation on test set
-    ##########################
+
+    ################# evaluation on test set #################
+
     X_test, y_test = load_fingerprint_test(feats_first=False)
     gs = GaussianScaler().fit(X)
     sc = StandardScaler().fit(X)
 
     X_std = sc.transform(X)
-    # transform using the mean and cov
-    # computed in the fit using X (train)
-    # as reference
     X_test_std = sc.transform(X_test)
 
     X_gauss = gs.transform(X)
-    # transform using X (as reference) as reference
-    # i.e. the scaler is already fitted here!
     X_test_gauss = gs.transform(X_test)
 
     writer = Writer("results/gmm_results_eval.txt")

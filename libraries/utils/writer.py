@@ -1,5 +1,4 @@
 class Writer:
-    """File Writer helper to avoid repeating code"""
     def __init__(self, filename: str):
         self.f = open(filename, "w")
 

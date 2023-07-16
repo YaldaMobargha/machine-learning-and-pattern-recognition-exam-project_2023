@@ -4,25 +4,25 @@ best 3 models and their fusions
 """
 import numpy as np
 
-from mlprlib.model_selection import (
+from libraries.model_selection import (
     kfold_calibrate,
     k_fold_joint_eval
 )
 
-from mlprlib.metrics import detection_cost_fun
-from mlprlib.dataset import (
+from libraries.metrics import detection_cost_fun
+from libraries.dataset import (
     load_fingerprint_train
 )
 
 # import the 3 best performing models
-from mlprlib.svm import SVClassifier
-from mlprlib.gaussian import GaussianMixture
-from mlprlib.logistic import QuadLogisticRegression
+from libraries.svm import SVClassifier
+from libraries.gaussian import GaussianMixture
+from libraries.logistic import QuadLogisticRegression
 
 # standard scaler for preprocessing
-from mlprlib.preprocessing import StandardScaler
+from libraries.preprocessing import StandardScaler
 # cross validation
-from mlprlib.model_selection import CrossValidator
+from libraries.model_selection import CrossValidator
 
 # list of lambdas used for the LR
 l_list = [0, 1e-6, 1e-4, 1e-1, 1]

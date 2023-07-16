@@ -1,28 +1,23 @@
-"""
-Using the Linear Logistic Regression with linear and quadratic
-kernels with a 5-fold cross validation approach to
-classify wines and analyze the performances these methods yield.
-"""
 import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-from mlprlib.dataset import (
+from libraries.dataset import (
     load_fingerprint_train,
     load_fingerprint_test
 )
 
-from mlprlib.model_selection import (
+from libraries.model_selection import (
     train_test_split,
     CrossValidator
 )
 
-from mlprlib.preprocessing import standardize, StandardScaler, GaussianScaler
-from mlprlib.metrics import min_detection_cost_fun
-from mlprlib.reduction import PCA
+from libraries.preprocessing import standardize, StandardScaler, GaussianScaler
+from libraries.metrics import min_detection_cost_fun
+from libraries.reduction import PCA
 
-from mlprlib.utils import Writer
-from mlprlib.logistic import (
+from libraries.utils import Writer
+from libraries.logistic import (
     LogisticRegression,
     QuadLogisticRegression
 )
@@ -45,9 +40,8 @@ def lr_lambda_search(writer,
             "LR %s | lambda: %f | Data %s | single split | pi %s"
             % (lr_t, l, data_t, pi)
         )
-        # set l_scaler
+
         lr.l_scaler = l
-        # fit and evaluate score and minDCF
         lr.fit(X_train, y_train)
         _, score = lr.predict(X_test, return_proba=True)
         min_dcf, _ = min_detection_cost_fun(score, y_test, pi)
@@ -57,13 +51,6 @@ def lr_lambda_search(writer,
 
 
 def split_data_lr(writer, lr_t: 'str', data_t: 'str', X, y, pi=.5):
-    """
-    Applies a Linear or Quadratic Logistic Regression
-    to the wine dataset after a single split
-    for a set of  lambdas:
-
-        lambdas = [0, 1e-6, 1e-4, 1e-2, 1, 100]
-    """
     writer("----------------")
     writer(" Single split ")
     writer("----------------")
@@ -81,20 +68,13 @@ def k_fold_lr(writer, lr_t: str,
               std=False,
               gauss=False,
               use_pca=False,
-              # ignored if "use_pace" is False
               n_components=None):
     writer("----------------")
     writer("5 fold cross validation")
     writer("----------------")
 
-    # define a cross validator object
-    # which is going to use the KFold
-    # class and apply a pipeline of transformation
-    # on data after the split
     cv = CrossValidator(n_folds=n_folds)
 
-    # define the pipeline of transformers
-    # we want to apply for the CV
     transformers = []
     if std:
         transformers.append(StandardScaler())
@@ -114,7 +94,7 @@ def k_fold_lr(writer, lr_t: str,
             "LR %s | lambda: %f | Data %s | k fold | pi %s"
             % (lr_t, l, data_t, pi)
         )
-        # set l_scaler
+
         lr.l_scaler = l
         cv.fit(X, y, lr, transformers)
         scores = cv.scores
@@ -138,15 +118,12 @@ def save_plots(dcf_raw, dcf_gauss, dcf_std, fig_name):
 
 
 if __name__ == '__main__':
-    # number of folds for cross validation
     n_folds = 5
 
-    # load the dataset in the shape (n_samples, n_feats)
     X, y = load_fingerprint_train(feats_first=False)
     X_gauss = np.load('results/gaussian_feats.npy').T
     X_std = standardize(X)
 
-    # writing LR results
     writer = Writer("results/lr_results.txt")
 
     for pi in [.1, .5, .9]:
@@ -166,7 +143,6 @@ if __name__ == '__main__':
         scores_1_std = split_data_lr(writer, 'linear', 'std', X_std, y, pi)
         scores_5_std = k_fold_lr(writer, 'linear', 'std', X, y, n_folds, pi, std=True)
 
-        # save scores plot of linear LR
         save_plots(scores_1_raw, scores_1_gauss, scores_1_std, "lr_single_%s" % pi)
         save_plots(scores_5_raw, scores_5_gauss, scores_5_std, "lr_kfold_%s" % pi)
 
@@ -185,31 +161,24 @@ if __name__ == '__main__':
         scores_1_std = split_data_lr(writer, 'quadratic', 'std', X_std, y, pi)
         scores_5_std = k_fold_lr(writer, 'quadratic', 'std', X, y, n_folds, pi, std=True)
 
-        # save scores plot of linear LR
         save_plots(scores_1_raw, scores_1_gauss, scores_1_std, "qlr_single_%s" % pi)
         save_plots(scores_5_raw, scores_5_gauss, scores_5_std, "qlr_kfold_%s" % pi)
         writer("\n")
     writer.destroy()
 
-    ##########################
-    # evaluation on test set
-    ##########################
+
+    ################# evaluation on test set #################
+
     X_test, y_test = load_fingerprint_test(feats_first=False)
     gs = GaussianScaler().fit(X)
     sc = StandardScaler().fit(X)
 
     X_std = sc.transform(X)
-    # transform using the mean and cov
-    # computed in the fit using X (train)
-    # as reference
     X_test_std = sc.transform(X_test)
 
     X_gauss = gs.transform(X)
-    # transform using X (as reference) as reference
-    # i.e. the scaler is already fitted here!
     X_test_gauss = gs.transform(X_test)
 
-    # standardized data with 7 and 9 components PCA
     pca7 = PCA(n_components=7).fit(X_std)
     X_pca7 = pca7.transform(X_std)
     X_test_pca7 = pca7.transform(X_test_std)
@@ -226,22 +195,27 @@ if __name__ == '__main__':
             writer("LR Type : %s" % lr_t)
             writer("----------------")
 
+            writer("----------------")
             writer("Raw data")
             writer("----------------")
             lr_lambda_search(writer, lr_t, 'raw', X, y, X_test, y_test, pi)
 
+            writer("----------------")
             writer("Gaussian data")
             writer("----------------")
             lr_lambda_search(writer, lr_t, 'gauss', X_gauss, y, X_test_gauss, y_test, pi)
 
+            writer("----------------")
             writer("Standardized data")
             writer("----------------")
             lr_lambda_search(writer, lr_t, 'std', X_std, y, X_test_std, y_test, pi)
 
+            writer("----------------")
             writer("Standardized data, PCA(n_components=9)")
             writer("----------------")
             lr_lambda_search(writer, lr_t, 'std', X_pca9, y, X_test_pca9, y_test, pi)
 
+            writer("----------------")
             writer("Standardized data, PCA(n_components=7)")
             writer("----------------")
             lr_lambda_search(writer, lr_t, 'std', X_pca7, y, X_test_pca7, y_test, pi)

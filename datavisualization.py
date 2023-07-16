@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from mlprlib.dataset import (
+from libraries.dataset import (
     load_fingerprint_train,
     load_fingerprint_test,
     classes,
@@ -8,7 +8,7 @@ from mlprlib.dataset import (
 )
 
 import seaborn as sb
-from mlprlib.preprocessing import cumulative_feature_rank
+from libraries.preprocessing import cumulative_feature_rank
 
 
 def feats_histogram(X, y, label: str = ''):
@@ -52,13 +52,13 @@ if __name__ == "__main__":
     print("ones are %d" % np.sum(y_train))
     print("zeros are %d" % (len(y_train) - np.sum(y_train)))
 
-    # plot histograms of raw features
+    #histograms-raw features
     feats_histogram(X_train, y_train, "raw_hist")
 
     X_gauss = cumulative_feature_rank(X_train)
     feats_histogram(X_gauss, y_train, "gauss_hist")
 
-    # features correlations using heatmap
+    # features correlations-heatmap
     feat_heatmap(X_gauss, "gauss_feat_heat")
     feat_heatmap(X_gauss[:, y_train == 0], "gauss_feat_heat0")
     feat_heatmap(X_gauss[:, y_train == 1], "gauss_feat_heat1")
@@ -68,8 +68,6 @@ if __name__ == "__main__":
 
     np.save("results/gaussian_feats.npy", X_gauss)
 
-    # Gaussianise test data using training
-    # data in the comparison
     X_test, _ = load_fingerprint_test()
     X_test_gauss = cumulative_feature_rank(X_test, X_train)
     np.save("results/gaussian_feats_test.npy", X_test_gauss)
