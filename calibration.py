@@ -1,7 +1,4 @@
-"""
-Evaluate the scores and calibrated scores for the
-best 3 models and their fusions
-"""
+
 import numpy as np
 
 from libraries.model_selection import (
@@ -14,17 +11,13 @@ from libraries.dataset import (
     load_fingerprint_train
 )
 
-# import the 3 best performing models
 from libraries.svm import SVClassifier
 from libraries.gaussian import GaussianMixture
 from libraries.logistic import QuadLogisticRegression
 
-# standard scaler for preprocessing
 from libraries.preprocessing import StandardScaler
-# cross validation
 from libraries.model_selection import CrossValidator
 
-# list of lambdas used for the LR
 l_list = [0, 1e-6, 1e-4, 1e-1, 1]
 
 
@@ -72,7 +65,6 @@ if __name__ == '__main__':
     n_folds = 5
     X, y = load_fingerprint_train(feats_first=False)
 
-    # most performing models
     svc = SVClassifier(kernel='rbf', C=10,
                        gamma=np.exp(-2), pi_t=.5, csi=1)
     gmm = GaussianMixture(n_components=8)
@@ -86,10 +78,6 @@ if __name__ == '__main__':
     transformers = [StandardScaler()]
 
     for model, name in models.items():
-        # progress_bar.set_description(
-        #     "MODEL: %s" % type(model).__name__
-        # )
-        # cross validator
         print(name)
         print("----")
         cv = CrossValidator(n_folds=5)
@@ -103,15 +91,14 @@ if __name__ == '__main__':
     llr_qlr = np.load("results/llrQLR.npy")
     llr_gmm = np.load("results/llrGMM.npy")
 
-    # SVM + QLR
     print("SVM + QLR")
     print("----------\n")
     scores_kfold_fusion([llr_svm, llr_qlr], y, n_folds)
-    # SVM + GMM
+    
     print("SVM + GMM")
     print("----------\n")
     scores_kfold_fusion([llr_svm, llr_gmm], y, n_folds)
-    # SVM + GMM + QLR
+    
     print("SVM + GMM + QLR")
     print("----------\n")
     scores_kfold_fusion([llr_svm, llr_qlr, llr_gmm], y, n_folds)
