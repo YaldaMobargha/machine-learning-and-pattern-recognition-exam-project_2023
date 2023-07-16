@@ -28,7 +28,7 @@ from mlprlib.utils import Writer
 
 def save_roc_plot(scores, y, fig_name: str, labels: list):
     plt.figure()
-    plt.grid(b=True)
+    plt.grid(True)
     plt.xlabel('false positive rate')
     plt.ylabel('true positive rate')
     for llr in scores:
